@@ -28,8 +28,10 @@ def Process(number):
                 numb = int(number - (16 * balance))
                 total.insert(0, numb)
                 number = balance
-            total.insert(0, balance)           
+            if balance != 0:
+                total.insert(0, balance)           
             print(NewNumber(total, dictionary))
+
         else:
             check = CheckKey(dictionary, number)
             if (check == -1):
@@ -37,13 +39,12 @@ def Process(number):
             else:
                 print(check)
     else:
-        print("Введенное число больше чем 65536")
+        raise Exception("Введенное число больше или равно чем 65536")
 #--------------------------------------------------------------------------------------------------------
 
 print("Выполнил %%UserName%%, группа ЕМ-411.16, Вариант 10, Лабораторная работа номер 6, задача 2")
 try:
     number = int(input('Введите число в десятичной системе счисления: '))
-    print('Число в шестнадцатеричной системе счисления: ', end ='') 
     Process(number)
 except ValueError:
     print("Нужно ввести число")
